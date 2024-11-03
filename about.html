@@ -21,7 +21,7 @@
     <div id="stars2"></div>
     <div id="stars3"></div>
 </div>
-<div id="common-placeholder"></div>
+
   
 
   <!-- Header -->
@@ -91,15 +91,7 @@
       </section>
     </section>
   </main>
-  <script>
-    // JavaScript to load common.html
-    fetch('common.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('common-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading common.html:', error));
-</script>
+  
   <script src="assets/js/common.js"></script> <!-- Loads header dynamically -->
   <!-- Footer -->
   <footer>

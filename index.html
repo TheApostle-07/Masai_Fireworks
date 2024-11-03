@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Fireworks Display</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+</head>
+<body>
+    <!-- Header Container for dynamic loading -->
+    <header>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+
+      <div class="explosion-counter">
+        <div class="square" id="square-1"></div>
+        <div class="square" id="square-2"></div>
+        <div class="square" id="square-3"></div>
+        <div class="square" id="square-4"></div>
+        <div class="square" id="square-5"></div>
+        <div class="square" id="square-6"></div>
+        <div class="square" id="square-7"></div>
+        <div class="square" id="square-8"></div>
+        <div class="square" id="square-9"></div>
+        <div class="square" id="square-10"></div>
+    </div>
+
+      <!-- Starry Background Layers -->
+      <div id="stars-container"></div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <!-- Main Content -->
+    <main id="main-display">
+      <div id="background-overlay"></div>
+      <h1>Welcome to the Fireworks Display</h1>
+      <p>Click anywhere on the canvas to create your own fireworks!</p>
+      <canvas id="fireworksCanvas"></canvas>
+  </main>
+
+
+    <div class="modal-bar">
+      <!-- Main options -->
+      <div id="main-options" class="modal-content">
+          
+          <button class="modal-option middle-option" onclick="showOptions('background')" title="Background">
+              <i class="fas fa-image"></i>
+          </button>
+          <button class="modal-option last-option" onclick="showOptions('audio')" title="Audio">
+              <i class="fas fa-music"></i>
+          </button>
+      </div>
+  
+      <!-- Fireworks options -->
+      <div id="fireworks-options" class="modal-content hidden">
+          <span class="back-icon" onclick="goBack()" title="Back"><i class="fas fa-arrow-left"></i></span>
+          <button class="modal-option" onclick="showSubOptions('rockets')" title="Rockets"><i class="fas fa-rocket"></i></button>
+          <button class="modal-option" onclick="showSubOptions('shapes')" title="Shapes"><i class="fas fa-shapes"></i></button>
+          <button class="modal-option" onclick="showSubOptions('spinners')" title="Spinners"><i class="fas fa-sync-alt"></i></button>
+          <button class="modal-option" onclick="showSubOptions('bombs')" title="Bombs"><i class="fas fa-bomb"></i></button>
+          <button class="modal-option" onclick="showSubOptions('sparklers')" title="Sparklers"><i class="fas fa-star"></i></button>
+          <button class="modal-option" onclick="showSubOptions('multi-shot')" title="Multi-Shot"><i class="fas fa-stream"></i></button>
+      </div>
+  
+      <!-- Rockets Sub-Options -->
+      <div id="rockets-options" class="modal-content hidden">
+          <span class="back-icon" onclick="goToFireworksOptions()" title="Back"><i class="fas fa-arrow-left"></i></span>
+          <button class="modal-option" onclick="selectFireworkType('Peony')" title="Peony"><i class="fas fa-circle"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Chrysanthemum')" title="Chrysanthemum"><i class="fas fa-seedling"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Willow')" title="Willow"><i class="fas fa-tree"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Palm')" title="Palm"><i class="fas fa-hand-paper"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Dahlia')" title="Dahlia"><i class="fas fa-leaf"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Kamuro')" title="Kamuro"><i class="fas fa-cloud"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Brocade Crown')" title="Brocade Crown"><i class="fas fa-crown"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Ring Shells')" title="Ring Shells"><i class="fas fa-circle-notch"></i></button>
+          <button class="modal-option" onclick="selectFireworkType('Spider Shells')" title="Spider Shells"><i class="fas fa-spider"></i></button>
+      </div>
+
+      <!-- Shapes Sub-Options -->
+<div id="shapes-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goToFireworksOptions()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title">Select Shape Type</p>
+  <button class="modal-option" onclick="selectFireworkType('Crossette')" title="Crossette">
+      <i class="fas fa-cross"></i>
+  </button>
+  <button class="modal-option" onclick="selectFireworkType('Fish')" title="Fish">
+      <i class="fas fa-fish"></i>
+  </button>
+  <button class="modal-option" onclick="selectFireworkType('Horsetail')" title="Horsetail">
+      <i class="fas fa-horse-head"></i>
+  </button>
+  <button class="modal-option" onclick="selectFireworkType('Go-Getters')" title="Go-Getters">
+      <i class="fas fa-bullseye"></i>
+  </button>
+  <button class="modal-option" onclick="selectFireworkType('Comets')" title="Comets">
+    <i class="fa-solid fa-meteor"></i>
+</button>
+  <button class="modal-option" onclick="selectFireworkType('Whistlers')" title="Whistlers">
+      <i class="fas fa-wind"></i>
+  </button>
+  <button class="modal-option" onclick="selectFireworkType('Strobes')" title="Strobes">
+      <i class="fas fa-lightbulb"></i>
+  </button>
+</div>
+
+
+
+<div id="spinners-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goToFireworksOptions()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title">Select Spinner Type</p>
+
+  <!-- Spinner type options with icons -->
+  <button class="modal-option" title="Fountains">
+      <i class="fas fa-faucet"></i> <!-- Fountain Icon -->
+  </button>
+  <button class="modal-option" title="Mines">
+      <i class="fas fa-mountain"></i> <!-- Mine Icon -->
+  </button>
+  <button class="modal-option" title="Catherine Wheels">
+      <i class="fas fa-circle-notch"></i> <!-- Catherine Wheel Icon -->
+  </button>
+  <button class="modal-option" title="Ground Spinners">
+      <i class="fas fa-sync-alt"></i> <!-- Ground Spinner Icon -->
+  </button>
+  <button class="modal-option" title="Waterfalls">
+      <i class="fas fa-water"></i> <!-- Waterfall Icon -->
+  </button>
+  <button class="modal-option" title="Gerbs">
+      <i class="fas fa-fire"></i> <!-- Gerbs Icon -->
+  </button>
+  <button class="modal-option" title="Snakes">
+      <i class="fas fa-slash"></i> <!-- Snake Icon -->
+  </button>
+</div>
+<div id="bombs-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goToFireworksOptions()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title">Select Bomb Type</p>
+
+  <!-- Bomb type options with icons -->
+  <button class="modal-option" title="Salutes" onclick="selectBombType('Salutes')">
+      <i class="fas fa-bell"></i> <!-- Salutes Icon -->
+  </button>
+  <button class="modal-option" title="Bangers" onclick="selectBombType('Bangers')">
+      <i class="fas fa-bomb"></i> <!-- Bangers Icon -->
+  </button>
+  <button class="modal-option" title="Whistlers" onclick="selectBombType('Whistlers')">
+      <i class="fas fa-wind"></i> <!-- Whistlers Icon -->
+  </button>
+</div>
+
+<div id="sparklers-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goToFireworksOptions()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title">Select Sparkler Type</p>
+
+  <!-- Different Sparkler Types with Updated Icons -->
+  <button class="modal-option" title="Standard Sparkler" onclick="selectSparklerType('Standard Sparkler')">
+      <i class="fas fa-fire-alt" style="color: #ffd54f;"></i> <!-- Fire icon for Standard Sparkler -->
+  </button>
+  <button class="modal-option" title="Colorful Sparkler" onclick="selectSparklerType('Colorful Sparkler')">
+      <i class="fas fa-lightbulb colorful-icon" style="color: #ff69b4;"></i> <!-- Lightbulb icon for Colorful Sparkler -->
+  </button>
+  <button class="modal-option" title="Fountain Sparkler" onclick="selectSparklerType('Fountain Sparkler')">
+      <i class="fas fa-fire" style="color: #ff4500;"></i> <!-- Fire icon for Fountain Sparkler -->
+  </button>
+  <button class="modal-option" title="Jumbo Sparkler" onclick="selectSparklerType('Jumbo Sparkler')">
+      <i class="fas fa-star" style="color: #7fffd4;"></i> <!-- Star icon for Jumbo Sparkler -->
+  </button>
+</div>
+
+
+<div id="multi-shot-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goToFireworksOptions()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title">Select Multi-Shot Type</p>
+
+  <!-- Multi-Shot Firework Types with Alternative Icons -->
+  <button class="modal-option" title="Roman Candles" onclick="selectMultiShotType('Roman Candles')">
+      <i class="fas fa-fire" style="color: #ff6347;"></i> <!-- Fire icon for Roman Candles -->
+  </button>
+  <button class="modal-option" title="Cake Fireworks" onclick="selectMultiShotType('Cake Fireworks')">
+      <i class="fas fa-birthday-cake" style="color: #ff69b4;"></i> <!-- Cake icon for Cake Fireworks -->
+  </button>
+  <button class="modal-option" title="Multi-Break Shells" onclick="selectMultiShotType('Multi-Break Shells')">
+      <i class="fas fa-bomb" style="color: #ffa500;"></i> <!-- Bomb icon for Multi-Break Shells -->
+  </button>
+  <button class="modal-option" title="Repeater" onclick="selectMultiShotType('Repeater')">
+      <i class="fas fa-sync-alt" style="color: #4caf50;"></i> <!-- Sync icon for Repeater -->
+  </button>
+  <button class="modal-option" title="Fan Shape" onclick="selectMultiShotType('Fan Shape')">
+      <i class="fas fa-fan" style="color: #87ceeb;"></i> <!-- Fan icon for Fan Shape -->
+  </button>
+</div>
+
+
+  
+      <!-- Customize Fireworks -->
+      <div id="fireworks-customization" class="modal-content hidden">
+        <span class="back-icon" onclick="goToFireworksOptions()" title="Back">
+            <i class="fas fa-arrow-left"></i>
+        </span>
+        
+        <!-- Centered Customization Title -->
+        <p id="selected-firework-type" class="option-title">Customize Firework</p>
+        
+        <!-- Color Options in Grid -->
+        <div class="color-options">
+            <button class="color-button" title="Red" onclick="setFireworkColor('Red')">
+                <i class="fas fa-palette" style="color: red;"></i>
+            </button>
+            <button class="color-button" title="Green" onclick="setFireworkColor('Green')">
+                <i class="fas fa-palette" style="color: green;"></i>
+            </button>
+            <button class="color-button" title="Blue" onclick="setFireworkColor('Blue')">
+                <i class="fas fa-palette" style="color: blue;"></i>
+            </button>
+            <button class="color-button" title="Yellow" onclick="setFireworkColor('Yellow')">
+                <i class="fas fa-palette" style="color: yellow;"></i>
+            </button>
+            <button class="color-button" title="Multi-color" onclick="setFireworkColor('Multi-color')">
+                <i class="fas fa-palette multi-color-icon"></i>
+            </button>
+            <button class="color-button" title="Random" onclick="setFireworkColor('Random')">
+                <i class="fas fa-random random-icon"></i>
+            </button>
+        </div>
+    </div>
+
+<!-- Background Options -->
+<!-- Background Options -->
+<!-- Background Options -->
+<div id="background-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goBack()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title">Choose Background</p>
+  
+  <div class="background-options">
+      <button class="background-button" title="Cityscape" onclick="changeBackground(this)" data-background="assets/images/cityscape.jpg">
+          <i class="fas fa-city"></i>
+      </button>
+      <button class="background-button" title="Night Sky" onclick="changeBackground(this)" data-background="assets/images/night-sky.jpg">
+          <i class="fas fa-moon"></i>
+      </button>
+      <button class="background-button" title="Sunset over Ocean" onclick="changeBackground(this)" data-background="assets/images/sunset-ocean.jpg">
+          <i class="fas fa-sun"></i>
+      </button>
+      <button class="background-button" title="Island" onclick="changeBackground(this)" data-background="assets/images/island.jpg">
+          <i class="fas fa-umbrella-beach"></i>
+      </button>
+  </div>
+</div>
+
+
+ <!-- Audio Options -->
+<div id="audio-options" class="modal-content hidden">
+  <span class="back-icon" onclick="goBack()" title="Back">
+      <i class="fas fa-arrow-left"></i>
+  </span>
+  <p class="option-title ">Choose Audio</p>
+  
+  <!-- Audio selection buttons -->
+  <div class="audio-options">
+      <button class="audio-button" title="The_Intro_By_XX" onclick="toggleAudio('/assets/sounds/The_Intro.mp3', this)">
+          <i class="fas fa-play-circle"></i>
+      </button>
+      <button class="audio-button" title="Night_Owl" onclick="toggleAudio('/assets/sounds/Night_Owl.mp3', this)">
+          <i class="fas fa-play-circle"></i>
+      </button>
+      <button class="audio-button" title="Sunset_Love" onclick="toggleAudio('/assets/sounds/Sunset_Lover.mp3', this)">
+          <i class="fas fa-play-circle"></i>
+      </button>
+      <button class="audio-button" title="Stop Audio" onclick="stopAudio(this)">
+        <i class="fas fa-stop-circle"></i>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </div>
+  
+</div>
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Fireworks Display Project | <a href="index.html">Home</a> | <a href="about.html">About</a></p>
+</footer>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fireworks Display Project | <a href="about.html">About</a> | <a href="contact.html">Contact</a></p>
+    </footer>
+
+    <!-- Load JavaScript files -->
+    <script  src="assets/js/common.js"></script> <!-- Loads header dynamically -->
+    <script  src="assets/js/fireworks.js"></script> <!-- Fireworks display logic -->
+</body>
+</html>
